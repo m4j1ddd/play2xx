@@ -24,7 +24,7 @@ $this->app['request']->server->set('HTTPS', true);
      * @return void
      */
     public function boot() {
-	\URL::forceScheme('https');
+	\URL::forceScheme('http');
         view()->share('settings', Settings::where('id', 1)->first());
     }
 
