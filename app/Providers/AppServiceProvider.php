@@ -12,11 +12,6 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-$this->app['request']->server->set('HTTPS', true);
-        //8
-    }
 
     /**
      * Bootstrap any application services.
@@ -24,7 +19,6 @@ $this->app['request']->server->set('HTTPS', true);
      * @return void
      */
     public function boot() {
-	\URL::forceScheme('http');
         view()->share('settings', Settings::where('id', 1)->first());
     }
 
