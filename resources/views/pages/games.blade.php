@@ -1,88 +1,88 @@
  <div class="col-xs-12 index-carousel">
  	@if($settings->slider == 1)
-    <div class="carousel">
-        <div>
-            <div class="carousel-slide">
-                <div class="carousel-background" style="background-image: url(/img/esport.webp);"></div>
-                <div class="carousel-content">
-                    <div class="slide-header">
-                        Промокоды
-                    </div>
-                    <div class="slide-content">
-                        Хочешь быть в курсе новостей? Получать бесплатные бонусы? Промокоды, розыгрыши и многое другое.<br>
-                        Заходи к нам в группу вк - <a class="ll" href="https://vk.com/bankwin" target="_blank">Bets Play2x</a>
-                    </div>
-                </div>
-                <button class="slide-button" onclick="window.open('https://vk.com/bankwin', '_blank')">Перейти</button>
-            </div>
-        </div>
-        <div>
-            <div class="carousel-slide">
-                <div class="carousel-background" style="background-image: url(/img/main-slide.webp);"></div>
-                <div class="carousel-content">
-                    <div class="slide-header">
-                        Удача в твоих руках!
-                    </div>
-                    <div class="slide-content">
-                        Испытайте пик социальных азартных игр,<br>сочетающую атмосферу реального казино с простотой ваших любимых игровых режимов. 
-                    </div>
-                </div>
-                <button class="slide-button" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/bonus')" @endif>Начать играть</button>
-            </div>
-        </div>
-        <div>
-            <div class="carousel-slide">
-                <div class="carousel-background" style="background-image: url(/img/main-slide.webp);"></div>
-                <div class="carousel-content">
-                    <div class="slide-header">
-                        Начинай с нуля!
-                    </div>
-                    <div class="slide-content">
-                        Начни с нуля, чтобы стать богаче и успешнее,<br>получи ежедневный бонус до 100 рублей, чтобы начать зарабатывать реальный кэш. 
-                    </div>
-                </div>
-                <button class="slide-button" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/bonus')" @endif>Забрать бонус</button>
-            </div>
-        </div>
-    </div> 
+         <div class="carousel">
+             <div>
+                 <div class="carousel-slide">
+                     <div class="carousel-background" style="background-image: url(/img/esport.webp);"></div>
+                     <div class="carousel-content">
+                         <div class="slide header">
+                             Promo codes
+                         </div>
+                         <div class="slide content">
+                             Do you want to be aware of the news? Get free bonuses? Promo codes, sweepstakes and more.<br>
+                             Join our VK group - <a class="ll" href="https://vk.com/bankwin" target="_blank">Bets Play2x</a>
+                         </div>
+                     </div>
+                     <button class="slide-button" onclick="window.open('https://vk.com/bankwin', '_blank')">Go</button>
+                 </div>
+             </div>
+             <div>
+                 <div class="carousel-slide">
+                     <div class="carousel-background" style="background-image: url(/img/main-slide.webp);"></div>
+                     <div class="carousel-content">
+                         <div class="slide header">
+                             Luck is in your hands!
+                         </div>
+                         <div class="slide content">
+                             Experience the pinnacle of social gambling, combining the atmosphere of a real casino with the simplicity of your favorite game modes.
+                         </div>
+                     </div>
+                     <button class="slide-button" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/bonus')" @endif>Start playing</button>
+                 </div>
+             </div>
+             <div>
+                 <div class="carousel-slide">
+                     <div class="carousel-background" style="background-image: url(/img/main-slide.webp);"></div>
+                     <div class="carousel-content">
+                         <div class="slide header">
+                             Start from scratch!
+                         </div>
+                         <div class="slide content">
+                             Start from scratch to become richer and more successful<br>get a daily bonus up to 100 rubles to start earning real cash.
+                         </div>
+                     </div>
+                     <button class="slide-button" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/bonus')" @endif>Claim bonus</button>
+                 </div>
+             </div>
+         </div>
 	@endif
 	@if(Auth::guest())
-	<div class="welcome_Welcome__rQYTl">
-            <div class="welcome_Right__27QGe">
-            <a href="javascript:void(0)" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/user?id={{Auth::user()->id}}')" @endif>
-            <img src="/img/Slide2.webp" loading="lazy" alt="" width="100%">
-                   		</a>
+            <div class="welcome_Welcome__rQYTl">
+                <div class="welcome_Right__27QGe">
+                    <a href="javascript:void(0)" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/user?id={{Auth::user()->id}}')" @endif>
+                        <img src="/img/Slide2.webp" loading="lazy" alt="" width="100%">
+                    </a>
 
                 </div>
                 <div class="welcome_Left__JPT6w">
 
-                    <div class="welcome_Intro__3Zo-O">Bets Play2x – Моментальные игры с выводом денег. Лучший лицензированный сайт для отдыха и заработка.
+                    <div class="welcome_Intro__3Zo-O">Bets Play2x – Instant games with money withdrawal. The best licensed site for recreation and earnings.
                     </div>
-					@php
-					$users = (\DB::table('users')->count() + $settings->fakesumusers);
-					$withdraws = (\DB::table('withdraw')->where('status', 1)->sum('amount') + $settings->fakesumwithdraw);
-					$pu = number_format($users,0,'',' ');
-					$pw = number_format($withdraws,0,'',' ');
-					@endphp
+                    @php
+                        $users = (\DB::table('users')->count() + $settings->fakesumusers);
+                        $withdraws = (\DB::table('withdraw')->where('status', 1)->sum('amount') + $settings->fakesumwithdraw);
+                        $pu = number_format($users,0,'',' ');
+                        $pw = number_format($withdraws,0,'',' ');
+                    @endphp
                     <div class="welcome_Counters__2BjGU">
                         <div class="welcome_Item__3ifzJ">
-                            <div class="welcome_Label__2pEjZ">Игроков</div>{{$pu}}</div>
+                            <div class="welcome_Label__2pEjZ">Players</div>{{$pu}}</div>
                         <div class="welcome_Item__3ifzJ">
-                            <div class="welcome_Label__2pEjZ">Выведено</div>{{$pw}} <i style="font-size: 19px;" class="far fa-ruble-sign"></i></div>
+                            <div class="welcome_Label__2pEjZ">Rendered</div>{{$pw}} <i style="font-size: 19px;" class="far fa-ruble-sign"></i></div>
                     </div>
-                     <div class="welcome_Counters__2BjGU">
+                    <div class="welcome_Counters__2BjGU">
 
                     </div>
-                     <div class="welcome_Registration__3VnWT"> <span>БОНУС ПРИ РЕГИСТРАЦИИ</span>
-                    <a href="javascript:void(0)" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/')" @endif class="btn22">
-                  			НАЧАТЬ ИГРАТЬ
+                    <div class="welcome_Registration__3VnWT"> <span>REGISTER BONUS</span>
+                        <a href="javascript:void(0)" @if(Auth::guest()) onclick="$('#b_si').click();" @else onclick="load('/')" @endif class="btn22">
+                            BEGIN TO PLAY
 
-                   		</a>
+                        </a>
                     </div>
                 </div>
 
             </div>
-			@endif
+    @endif
 </div>
 <div class="col-xs-12" style="margin-top: 10px">
         @php
@@ -96,7 +96,7 @@
             if(!\App\Game::isDisabled($game)) echo '<div class="i_game_overlay-'.$game.'"></div>';
             else echo '	        <div class="i_game-ribbon_container">
             <span class="i_game-ribbon">
-                Игра недоступна
+                Game unavailable
             </span>
         </div><div class="i_game_overlay-'.$game.'"></div><div data-disable-ajax-loading="'.$game.'" class="i_game_disabled_overlay"></div>';
         };
@@ -120,7 +120,7 @@
             </div>
         </div>
     @endif
-	
+
 		@if(!Auth::guest())
 	@if($settings->slide_enabled == 1)
         <div class="col-xs-12">
@@ -154,7 +154,7 @@
     display: inline-block;
 }
   </style>
-	<div class="landing_Caption"><span>МОМЕНТАЛЬНЫЕ ИГРЫ</span></div>
+	<div class="landing_Caption"><span>INSTANT GAMES</span></div>
   <!---  <div class="col-xs-12">
         <div class="i_game i_game-bottle event_container" style="background-image: url(/)" onclick="load('/battle')">
             <div class="i_game-name">
@@ -299,7 +299,7 @@
 				@if(\App\Box::isFreeAvailable())
                 <div class="gg_sidebar-notification">1</div>
 				@endif
-                Кейсы
+                Cases
             </div>
 			{{$online('cases')}}
         </div>
@@ -310,8 +310,8 @@
             <div class="i_game_overlay-bonus i_game_overlay-bonus_2"></div>
             <div class="i_game_overlay-bonus i_game_overlay-bonus_3 hidden-xs"></div>
             <div class="i_game-name bonus_banner_desc" id="bonus_banner_name">
-                <i class="fad fa-coins i_y_i" style="margin-right: 5px"></i><span class="i_y_i">Бонус</span><br>
-                Получи денежный бонус<br>бесплатно для начала игры на Bets Play2x!
+                <i class="fad fa-coins i_y_i" style="margin-right: 5px"></i><span class="i_y_i">Bonus</span><br>
+                Get a cash bonus<br>free to start playing at Bets Play2x!
             </div>
         </div>
     </div>
@@ -319,10 +319,10 @@
         <div class="i_game i_game-vk" onclick="var win = window.open('https://vk.com/bets.play2x', '_blank'); win.focus()" id="vk_banner">
             <i class="fab fa-vk i_game_overlay-vk"></i>
             <div class="i_game-name vk_banner_desc" id="vk_banner_name">
-                <i class="fab fa-vk i_b_i"></i><span class="i_b_i">ВКонтакте</span><br>
-                Присоединяйся к группе ВКонтакте<br>
-                и будь вкурсе всех новостей,<br>
-                а так же специальных промокодов!
+                <i class="fab fa-vk i_b_i"></i><span class="i_b_i">Contact</span><br>
+                Join the contact group<br>
+                and stay up to date with all the news,<br>
+                as well as special promo codes!
             </div>
         </div>
     </div>

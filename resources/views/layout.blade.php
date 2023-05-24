@@ -227,7 +227,7 @@
         @if(Auth::guest())
             <div class="user">
                 <a id="b_si" onclick="$('[data-auth-action=\'auth\']').click(); $('.md-auth').toggleClass('md-show', true)" class="btn-vk">
-                    <i class="myicon-high-five"></i> Авторизация
+                    <i class="myicon-high-five"></i> Authorization
                 </a>
             </div>
             <a class="menu-button chat-toggle btn-toggle3" type="button">
@@ -300,12 +300,10 @@ width:190px;
 	</style>
 		  <div class="money-block__money-area-demo" style="display: none;"><i class="far fa-infinity"></i></div>
           <div class="money-block__actions">
-            <a onclick="$('.md-wallet').toggleClass('md-show', true)" class="wallet-link" id="_payin">
-              Кошелек
-            </a>
+            <a onclick="$('.md-wallet').toggleClass('md-show', true)" class="wallet-link" id="_payin">Wallet</a>
           </div>
 		  <div class="money-block__actions-demo" style="display: none;">
-            <a class="wallet-link">Демо &nbsp;&nbsp;</a>
+            <a class="wallet-link">Demo &nbsp;&nbsp;</a>
           </div>
         </div>
       </div>
@@ -315,7 +313,7 @@ width:190px;
 	  <div data-watch-disable-loader="true" data-watch-fragment="/fragment.notifications_counter"></div>
 	  <div class="header_notifications_window no-select" data-visible="false" style="display: none">
                                 <div class="header_notification_header">
-                                    Уведомления
+                                    Notifications
                                     <i class="header_notifications_close fal fa-times"></i>
                                 </div>
                                 <div class="nano">
@@ -354,12 +352,12 @@ width:190px;
                     <table class="live_table" id="ll">
                         <thead>
                             <tr class="live_table-header">
-                                <th>ИГРА</th>
-                                <th>ИГРОК</th>
-                                <th class="hidden-xs">ВРЕМЯ</th>
-                                <th class="hidden-xs">СТАВКА</th>
-                                <th class="hidden-xs">КОЭФФ.</th>
-                                <th>ВЫИГРЫШ</th>
+                                <th>GAME</th>
+                                <th>PLAYER</th>
+                                <th class="hidden-xs">TIME</th>
+                                <th class="hidden-xs">RATE</th>
+                                <th class="hidden-xs">RATIO.</th>
+                                <th>WIN</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -374,8 +372,8 @@ width:190px;
                                         </div>
                                         <div class="ll_game">
                                             <span onclick="@if($d['game_id'] != 12) load('/{{strtolower($d['name'])}}'); @else load('/cases'); @endif">{{$d['name']}}</span>
-                                            @if($d['game_id'] != 12) <p onclick="user_game_info({{$d['id']}})">Просмотр</p>
-                                            @else <p onclick="load('/cases')">Перейти</p> @endif
+                                            @if($d['game_id'] != 12) <p onclick="user_game_info({{$d['id']}})">View</p>
+                                            @else <p onclick="load('/cases')">Jump</p> @endif
                                         </div>
                                     </div>
                                 </th>
@@ -398,9 +396,9 @@ width:190px;
                                 </th>
                                 <th class="hidden-xs">
                                     <div class="live_table-animated">
-                                     <!--   @if($d['game_id'] != 12) x{{$d['mul']}} @endif --->
-                                @if($d['game_id'] == 12) — @endif
-								@if($d['game_id'] != 12) x{{$d['mul']}} @endif
+                                        <!-- @if($d['game_id'] != 12) x{{$d['mul']}} @endif --->
+                                        @if($d['game_id'] == 12) - @endif
+                                        @if($d['game_id'] != 12) x{{$d['mul']}} @endif
                                     </div>
                                 </th>
                                 <th>
@@ -409,7 +407,7 @@ width:190px;
                                     </div>
                                 </th>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -417,39 +415,38 @@ width:190px;
         </div>
     </noindex>
 	<div class="mobile-menu">
-    <div class="mobile-menu__contents">
-      <div style="display: none;" class="mobile-menu__submenu mobile-menu__submenu_games">
-        <div class="mobile-menu__submenu__vertical-divider"></div>
-      </div>
-      <a onclick="load('/')" data-submenu="mobile-menu__submenu_games" class="open-submenu mobile-menu__link">
-        <span class="fal fa-gamepad mobile-menu__link-icon"></span>
-        Игры
-      </a>
-	  @if(!Auth::guest())
-      <a onclick="load('/user?id={{Auth::user()->id}}')" class="mobile-menu__link ">
-        <span class="fal fa-user-alt mobile-menu__link-icon lightable"></span>
-        Профиль
-      </a>
+        <div class="mobile-menu__contents">
+            <div style="display: none;" class="mobile-menu__submenu mobile-menu__submenu_games">
+                <div class="mobile-menu__submenu__vertical-divider"></div>
+            </div>
+            <a onclick="load('/')" data-submenu="mobile-menu__submenu_games" class="open-submenu mobile-menu__link">
+                <span class="fal fa-gamepad mobile-menu__link-icon"></span>
+                Games
+            </a>
+          @if(!Auth::guest())
+          <a onclick="load('/user?id={{Auth::user()->id}}')" class="mobile-menu__link ">
+              <span class="fal fa-user-alt mobile-menu__link-icon lightable"></span>
+              Profile
+          </a>
 	  @endif
-      <a onclick="swapChat()" class="btn-toggle3 mobile-menu__link">
-        <span class="fal fa-comment-alt-lines mobile-menu__link-icon"></span>
-        Чат
-      </a>
-
-      <a onclick="@if(Auth::guest()) $('#b_si').click(); @else load('/bonus'); @endif" class="mobile-menu__link ">
-        <span class="fal fa-coins mobile-menu__link-icon"></span>
-        Бонус
-      </a>
+          <a onclick="swapChat()" class="btn-toggle3 mobile-menu__link">
+              <span class="fal fa-comment-alt-lines mobile-menu__link-icon"></span>
+              Chat
+          </a>
+          <a onclick="@if(Auth::guest()) $('#b_si').click(); @else load('/bonus'); @endif" class="mobile-menu__link ">
+              <span class="fal fa-coins mobile-menu__link-icon"></span>
+              Bonus
+          </a>
      	  @if(!Auth::guest())
-	 <a onclick="swapMenu()" data-submenu="mobile-menu__submenu_more" class="open-submenu mobile-menu__link">
-        <span class="myicon-menu mobile-menu__link-icon"></span>
-        Еще
-      </a>
+                <a onclick="swapMenu()" data-submenu="mobile-menu__submenu_more" class="open-submenu mobile-menu__link">
+                    <span class="myicon-menu mobile-menu__link-icon"></span>
+                    More
+                </a>
 	  @endif
 	       	  @if(Auth::guest())
 	  <a onclick="load('/faq')" class="mobile-menu__link ">
-        <span class="fal fa-info-square mobile-menu__link-icon"></span>
-        Помощь
+          <span class="fal fa-info-square mobile-menu__link-icon"></span>
+          Help
       </a>
 	  @endif
 	  <div style="display: none;" class="mobile-menu__submenu mobile-menu__submenu_more">
@@ -459,7 +456,7 @@ width:190px;
             <div class="mobile-menu__submenu-item__link-wrapper">
               <span class="mobile-menu__submenu-item__link-icon fal fa-tasks"></span>
               <div class="mobile-menu__submenu-item__link__right">
-                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Задания</div>
+                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Tasks</div>
               </div>
             </div>
           </a>
@@ -471,7 +468,7 @@ width:190px;
             <div class="mobile-menu__submenu-item__link-wrapper">
               <span class="mobile-menu__submenu-item__link-icon myicon-customer-review"></span>
               <div class="mobile-menu__submenu-item__link__right">
-                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Отзывы</div>
+                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Reviews</div>
               </div>
             </div>
           </a>
@@ -484,7 +481,7 @@ width:190px;
             <div class="mobile-menu__submenu-item__link-wrapper">
               <span class="mobile-menu__submenu-item__link-icon myicon-high-five"></span>
               <div class="mobile-menu__submenu-item__link__right">
-                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Честная игра</div>
+                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Fair game</div>
               </div>
             </div>
           </a>
@@ -497,7 +494,7 @@ width:190px;
             <div class="mobile-menu__submenu-item__link-wrapper">
               <span class="mobile-menu__submenu-item__link-icon fal fa-info-square"></span>
               <div class="mobile-menu__submenu-item__link__right">
-                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Помощь</div>
+                <div class="mobile-menu__submenu-item__link-name mobile-menu__submenu-item__link-name_no-margin">Help</div>
               </div>
             </div>
           </a>
@@ -527,83 +524,83 @@ width:190px;
 
       </div>
     </div>
-  </div>
+    </div>
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
                     <div class="footer__block">
                         <div class="footer__block-header"><span style="color: white;">BAN</span><span style="color: #4c4c4c">KI</span></div>
-						  <font size=2 color="#748993">  <h1>Play2x</h1>
-<p>Если тебе мой друг не чем заняться сегодня вечером, то позволь мне порекомендовать тебе онлайн игру <strong>Плей 2х</strong>.
-Наш интернет ресурс Betsplay2x представляет собой собрание лучших мгновенных игр с возможностью заработка и вывода денежных средств.</p>
-<h2>Banki - мобильная версия</h2>
-<p>Мировой прогресс постоянно движется в перёд и дает нам возможность играть на плей 2х с мобильных устройств. Наш Play2x полностью адаптирован к вашим гаджетам.
-Теперь <strong>Play2x официальный сайт</strong> становится доступен вне дома, а даже на работе в школе или в парке.</p>
-<p>Иными словами, сервис плей 2х предлагает своим пользователям играть с мобильных устройств, причем для этого не нужно скачивать и устанавливать на свой телефон дополнительные приложения.</p>
+                        <font size=2 color="#748993"> <h1>Play2x</h1>
+                            <p>If you don't have anything to do tonight my friend, then let me recommend you an online game <strong>Play 2x</strong>.
+                                Our Internet resource Betsplay2x is a collection of the best instant games with the possibility of earning and withdrawing money.</p>
+                            <h2>Banki - mobile version</h2>
+                            <p>Global progress is constantly moving forward and gives us the opportunity to play on play 2x from mobile devices. Our Play2x is fully adapted to your gadgets.
+                                Now <strong>Play2x official site</strong> is available outside the home, and even at work at school or in the park.</p>
+                            <p>In other words, the Play 2x service offers its users to play from mobile devices, and for this you do not need to download and install additional applications on your phone.</p>
 
-<h3>Играть на официальном сайте Play2x в полном объёме честно</h3>
-<p>Так как в начале каждой игры виден хеш-код игры, благодаря ему не составит труда проверить честность нашего ресурса.
-Вкладывая средства, вы можете быть уверены в том, что администрация сайта проследит что-бы игра была честной,
-поскольку разработчики Play2x каждый день совершенствуют нашу систему защиты.</p>
+                            <h3>Play on the Play2x official website in full honesty</h3>
+                            <p>Since the hash code of the game is visible at the beginning of each game, thanks to it it will not be difficult to check the honesty of our resource.
+                                By investing, you can be sure that the site administration will make sure that the game is fair,
+                                because the developers of Play2x improve our protection system every day.</p>
 
-<h3>Раздача промокодов</h3>
-<p>Ежедневно сайт Play2x проводим раздачу бесплатных промокодов, у нас вы сможете <b>играть без депозита</b> используя полученный код для пополнения.</p>
-<p>При этом на счет начисляются настоящие деньги, следовательно пользователь может поэкспериментировать с разнообразными стратегиями для получения еще большей прибыли.
-Плей 2х постоянно предоставляет различные бонусы, коды и настоящие раздачи денег, которые дают шанс выиграть приз - Джек-пот.</p>
+                            <h3>Distribution of promotional codes</h3>
+                            <p>Every day, the Play2x site distributes free promotional codes, here you can <b>play without a deposit</b> using the received code for replenishment.</p>
+                            <p>At the same time, real money is credited to the account, so the user can experiment with a variety of strategies to get even more profit.
+                                Play2x constantly provides various bonuses, codes and real money giveaways, which give a chance to win a prize - Jackpot.</p>
 
-<h3>Поделись с друзьями ссылкой на Banki</h3>
-<p>Приглашайте друзей и вместе выигрывайте денежные призы, сидя дома на диване или кресле, где вас ничего не отвлекает.
-Продвинутая реферальная система начисляет 10руб. вашему другу.
-Для приглашения проделайте один легкий шаг - отправьте ему ссылку на <b>сайт Play2x</b> или разместите в социальных сетях, форумах.</p>
+                            <h3>Share a link to Banki with your friends</h3>
+                            <p>Invite your friends and win cash prizes together while sitting at home on a sofa or armchair, where nothing distracts you.
+                                Advanced referral system accrues 10 rubles. to your friend.
+                                For an invitation, take one easy step - send him a link to the <b>Play2x website</b> or post it on social networks, forums.</p>
 
-<h4>Быстрые выплаты на настоящем сайте Плей 2х</h4>
-<p>Программисты нашего официального сайта тщательно слядят за игрой. Благодаря им, вывод осуществляется за считанные минуты на популярные платежные системы электронных денег.</p>
-<p>Хотим заметить, что выплата возможна только на кошелек с которого был пополнен баланс на сайте Banki. Это одна из мер безопасности сайта для защиты вашего баланса аккаунта от мошенников.</p></font>
+                            <h4>Quick payouts on the real site Play 2x</h4>
+                            <p>Programmers of our official website carefully monitor the game. Thanks to them, the withdrawal is carried out in a matter of minutes to popular payment systems of electronic money.</p>
+                            <p>We would like to note that the payment is possible only to the wallet from which the balance was replenished on the Banki website. This is one of the site's security measures to protect your account balance from fraudsters.</p></font>
                         <hr class="footer__block-hr">
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="footer_category">Информация</div>
+                                <div class="footer_category">Information</div>
                                 <div class="footer__block-text footer__block-text_link">
-                                    <a href="javascript:void(0)" onclick="load('terms')">Пользовательское соглашение</a>
+                                    <a href="javascript:void(0)" onclick="load('terms')">User Agreement</a>
                                 </div>
                                 <div class="footer__block-text footer__block-text_link">
-                                    <a href="javascript:void(0)" onclick="load('policy')">Политика конфиденциальности</a>
+                                    <a href="javascript:void(0)" onclick="load('policy')">Privacy Policy</a>
                                 </div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="footer_category">Поддержка</div>
+                                <div class="footer_category">Support</div>
                                 <div class="footer__block-text footer__block-text_link">
-                                    <a href="javascript:void(0)" onclick="provablyfair()">Доказуемая честность</a>
+                                    <a href="javascript:void(0)" onclick="provablyfair()">Provably Fair</a>
                                 </div>
-								<div class="footer__block-text footer__block-text_link">
-                                    <a href="javascript:void(0)" onclick="load('/faq')">Помощь</a>
+                                <div class="footer__block-text footer__block-text_link">
+                                    <a href="javascript:void(0)" onclick="load('/faq')">Help</a>
                                 </div>
                             </div>
                         </div>
                         <div class="footer__block-text footer__block-text_copyright">
-                            Copyright © 2019-2021. Все права защищены
+                            Copyright © 2019-2021. All rights reserved
                         </div>
                         <a class="dn" href="https://www.free-kassa.ru/"><img alt="" class="mt20 lazyload" data-src="https://www.free-kassa.ru/img/fk_btn/14.png"></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-3">
                     <div class="footer__block">
-                        <div class="footer__block-header"><span style="color: #4c4c4c">Контакты</span></div>
+                        <div class="footer__block-header"><span style="color: #4c4c4c">Contact Us</span></div>
                         <hr class="footer__block-hr">
                         <div class="footer__block-text footer__block-text_link">
-                            <a href="https://vk.me/{{$settings->vk_url}}" target="_blank"><span style="color: white"><i class="fab fa-vk"></i> ВКонтакте</span> Служба поддержки</a>
+                            <a href="https://vk.me/{{$settings->vk_url}}" target="_blank"><span style="color: white"><i class="fab fa-vk"> </i> VKontakte</span> Support service</a>
                         </div>
-						<div class="footer__block-text footer__block-text_link">
-                            <a href="https://{{$settings->telegram_url}}" target="_blank"><span style="color: white"><i class="myicon-telegram"></i> Telegram</span> Группа</a>
+                        <div class="footer__block-text footer__block-text_link">
+                            <a href="https://{{$settings->telegram_url}}" target="_blank"><span style="color: white"><i class="myicon-telegram"></i> Telegram </span> Group</a>
                         </div>
                         <div class="footer__block-text footer__block-text_link">
                             <a href="mailto:{{$settings->support_email}}" style="color: white !important"><i class="fal fa-at"></i> {{$settings->support_email}}</a>
+                         </div>
+                        <div style="color: #3ac430;"> <br>
+                             <span class="fa fa-lock"></span> 256-bit encryption
                         </div>
-						<div style="color: #3ac430;"> <br>
-                <span class="fa fa-lock"></span> 256-битное шифрование
-            </div>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
