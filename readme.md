@@ -106,3 +106,7 @@ php artisan view:cache
 open ur site, and set all default settings in admin page settings;
 
 Enjoy work)
+
+start mysql with: mysql.server start
+start laravel with: php artisan serve
+stop mysql with: mysql.server stop
